@@ -1,5 +1,20 @@
 jQuery(function($){
 
+  // TODO: Сделать удаление карт
+
+  // // slight update to account for browsers not supporting e.which
+  // function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+  // // To disable f5
+  //     /* jQuery < 1.7 */
+  // $(document).bind("keydown", disableF5);
+  // /* OR jQuery >= 1.7 */
+  // $(document).on("keydown", disableF5);
+  //   // To re-enable f5
+  //     /* jQuery < 1.7 */
+  // $(document).unbind("keydown", disableF5);
+  // /* OR jQuery >= 1.7 */
+  // $(document).off("keydown", disableF5);
+
   $.fn.hScroll = function (amount) {
       amount = amount || 120;
       $(this).bind("DOMMouseScroll mousewheel", function (event) {
@@ -51,6 +66,7 @@ jQuery(function($){
 
     $('body').on('mouseup', '.card--drag', function(e) {
       var tableCard = $(this).clone();
+      var id = $(this).attr('data-id');
       tableCard.removeClass('card--drag');
       tableCard.addClass('card--table');
       var top = $(this).offset().top;
@@ -58,12 +74,13 @@ jQuery(function($){
       tableCard.css("top", parseInt(top)+"px");
       tableCard.css("left", parseInt(left)+"px");
       tableCard.appendTo( ".table" );
-      tableCard.resizable({ containment: ".table", aspectRatio: true });
       tableCard.draggable({ containment: ".table", scroll: false });
+      tableCard.find('.card__body').resizable({ containment: ".table", aspectRatio: true });
+      tableCard.find('.card__body').rotatable({ degress: 45 });
+      $('.cards .card[data-id='+id+']').addClass('hidd');
     });
 
     $('body').on('dblclick', '.card--table', function(e) {
-      console.log('dblclick');
       $(this).toggleClass('card--back');
     });
 

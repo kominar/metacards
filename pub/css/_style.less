@@ -6,6 +6,10 @@
     src: url('../fonts/Manrope-Medium.ttf');
 }
 
+.hidd {
+  display: none !important;
+}
+
 .content {
   display: flex;
   height: 100vh;
@@ -48,6 +52,7 @@
   border-radius: 12px;
   overflow: hidden;
   margin: 0 auto 25px;
+  user-select: none;
   box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
   transition: box-shadow 300ms;
 
@@ -68,9 +73,11 @@
   width: 100%;
 
   &__body {
+    width: 100%;
     padding: 30px;
-    overflow-x: auto;
+    overflow-x: scroll;
     display: flex;
+    align-items: flex-start;
     background-color: #eff3f4;
   }
 }
@@ -78,19 +85,10 @@
 .card {
   display: inline-block;
   width: 120px;
-  background-size: contain;
-  background-position: center;
   cursor: pointer;
-  border-radius: 12px;
   flex-shrink: 0;
-  overflow: hidden;
   margin-right: 15px;
-  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-  transition: box-shadow 300ms;
-
-  &:hover {
-    box-shadow: 0px 0px 13px 3px rgba(34, 60, 80, 0.35);
-  }
+  user-select: none;
 
   img {
     width: 100%;
@@ -102,11 +100,22 @@
   }
 
   &--table {
-    position: absolute;
+    position: absolute !important;
   }
 
   &--back {
     position: absolute;
+  }
+
+  &__body {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    transition: box-shadow 300ms;
+
+    &:hover {
+      box-shadow: 0px 0px 13px 3px rgba(34, 60, 80, 0.35);
+    }
   }
 
   &__suit {

@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/pub/css/jquery-ui.css"/>
   <script src="/pub/js/jquery.js"></script>
   <script src="/pub/js/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.css">
+  <script src="https://cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.min.js"></script>
   <script src="/pub/js/_script.js"></script>
   <title></title>
 </head>
@@ -23,9 +25,11 @@
 		<div class="cards">
 			<div id="cards" class="cards__body">
 				<? $num = 1; while ($num <= 20) { ?>
-					<div class="card" data-id="1">
-            <img class="card__suit" src="/uploads/cards/<?php echo $num; ?>.jpg">
-            <img class="card__shirt" src="/uploads/shirts/1.jpg">
+					<div class="card" data-id="card-<? echo $num; ?>">
+  					<div class="card__body">
+              <img class="card__suit" src="/uploads/cards/<? echo $num; ?>.jpg">
+              <img class="card__shirt" src="/uploads/shirts/1.jpg">
+            </div>
           </div>
 				<? $num++; } ?>
 			</div>
