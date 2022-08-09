@@ -46,7 +46,25 @@ jQuery(function($){
     })
 
     $('body').on('mouseleave', '.card--drag', function(e) {
-        $(this).remove();
+      $(this).remove();
+    });
+
+    $('body').on('mouseup', '.card--drag', function(e) {
+      var tableCard = $(this).clone();
+      tableCard.removeClass('card--drag');
+      tableCard.addClass('card--table');
+      var top = $(this).offset().top;
+      var left = $(this).position().left;
+      tableCard.css("top", parseInt(top)+"px");
+      tableCard.css("left", parseInt(left)+"px");
+      tableCard.appendTo( ".table" );
+      tableCard.resizable({ containment: ".table", aspectRatio: true });
+      tableCard.draggable({ containment: ".table", scroll: false });
+    });
+
+    $('body').on('dblclick', '.card--table', function(e) {
+      console.log('dblclick');
+      $(this).toggleClass('card--back');
     });
 
     // $('body').on('mousedown', '.cards .card', function(e) {

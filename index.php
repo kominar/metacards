@@ -23,7 +23,10 @@
 		<div class="cards">
 			<div id="cards" class="cards__body">
 				<? $num = 1; while ($num <= 20) { ?>
-					<div class="card" data-id="1"><img src="/uploads/cards/<?php echo $num; ?>.jpg"></div>
+					<div class="card" data-id="1">
+            <img class="card__suit" src="/uploads/cards/<?php echo $num; ?>.jpg">
+            <img class="card__shirt" src="/uploads/shirts/1.jpg">
+          </div>
 				<? $num++; } ?>
 			</div>
 		</div>

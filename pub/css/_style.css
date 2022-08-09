@@ -80,12 +80,29 @@
   box-shadow: 0px 0px 13px 3px rgba(34, 60, 80, 0.35);
 }
 .card img {
-  display: block;
   width: 100%;
 }
 .card--drag {
   position: absolute;
   z-index: 1;
+}
+.card--table {
+  position: absolute;
+}
+.card--back {
+  position: absolute;
+}
+.card__suit {
+  display: block;
+}
+.card--back .card__suit {
+  display: none;
+}
+.card__shirt {
+  display: none;
+}
+.card--back .card__shirt {
+  display: block;
 }
 .calc {
   max-width: 1172px;

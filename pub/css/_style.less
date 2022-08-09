@@ -93,13 +93,36 @@
   }
 
   img {
-    display: block;
     width: 100%;
   }
 
   &--drag {
     position: absolute;
     z-index: 1;
+  }
+
+  &--table {
+    position: absolute;
+  }
+
+  &--back {
+    position: absolute;
+  }
+
+  &__suit {
+    display: block;
+  }
+
+  &--back &__suit {
+    display: none;
+  }
+
+  &__shirt {
+    display: none;
+  }
+
+  &--back &__shirt {
+    display: block;
   }
 }
 
