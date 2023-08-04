@@ -60,6 +60,10 @@
     box-shadow: 0px 0px 13px 3px rgba(34, 60, 80, 0.35);
   }
 
+  &.active {
+    box-shadow: 0px 0px 15px 5px rgba(40, 167, 69, 0.9);
+  }
+
   img {
     display: block;
     width: 100%;
@@ -83,7 +87,7 @@
 }
 
 .card {
-  display: inline-block;
+  display: none;
   width: 120px;
   cursor: pointer;
   flex-shrink: 0;
@@ -132,6 +136,104 @@
 
   &--back &__shirt {
     display: block;
+  }
+
+  &__remove {
+    display: none;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    margin-left: -10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-position: center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg id='Icons' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3c/defs%3e%3cpath fill='%23FFF' d='M13,0H11A3,3,0,0,0,8,3V4H2A1,1,0,0,0,2,6H3V20a4,4,0,0,0,4,4H17a4,4,0,0,0,4-4V6h1a1,1,0,0,0,0-2H16V3A3,3,0,0,0,13,0ZM10,3a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V4H10Zm9,17a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6H19Z'/%3e%3cpath fill='%23FFF' d='M12,9a1,1,0,0,0-1,1v8a1,1,0,0,0,2,0V10A1,1,0,0,0,12,9Z'/%3e%3cpath fill='%23FFF' d='M15,18a1,1,0,0,0,2,0V10a1,1,0,0,0-2,0Z'/%3e%3cpath fill='%23FFF' d='M8,9a1,1,0,0,0-1,1v8a1,1,0,0,0,2,0V10A1,1,0,0,0,8,9Z'/%3e%3c/svg%3e");
+  }
+
+  .table &:hover &__remove {
+    display: block;
+  }
+
+  .cards &{
+    position: relative;
+    
+    &:hover {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+    &::after {
+      display: block;
+      content: '';
+      height: 50px;
+      width: 50px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      // background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3e%3ctitle/%3e%3cg data-name='18-Arrow-direction-pointer' id='_18-Arrow-direction-pointer'%3e%3cpolygon points='16 1 11 7 14 7 14 21 18 21 18 7 21 7 16 1' style='fill:none;stroke:%23FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px'/%3e%3cpolygon points='6 11 1 17 4 17 4 31 8 31 8 17 11 17 6 11' style='fill:none;stroke:%23FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px'/%3e%3cpolygon points='26 11 21 17 24 17 24 31 28 31 28 17 31 17 26 11' style='fill:none;stroke:%23FFF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px'/%3e%3c/g%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3e%3crect fill='none' height='256' width='256'/%3e%3cpolygon fill='none' points='32 120 128 24 224 120 176 120 176 152 80 152 80 120 32 120' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='12'/%3e%3cline fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='12' x1='176' x2='80' y1='216' y2='216'/%3e%3cline fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='12' x1='176' x2='80' y1='184' y2='184'/%3e%3c/svg%3e");
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+  }
+
+  .ui-rotatable-handle.ui-draggable {
+    display: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'%3e%3ctitle/%3e%3cg%3e%3cpath fill='%23FFF' d='M94.2422,37.7578a5.9979,5.9979,0,0,0-8.4844,0l-2.61,2.61A36.0347,36.0347,0,0,0,48,12a35.55,35.55,0,0,0-21.6211,7.3594,5.9977,5.9977,0,0,0,7.2422,9.5625A23.6677,23.6677,0,0,1,48,24,23.957,23.957,0,0,1,70.6729,40.4766l-3.97-3.1641a5.9956,5.9956,0,1,0-7.4765,9.375l15.0351,12a5.99,5.99,0,0,0,7.98-.4453l12-12A5.9979,5.9979,0,0,0,94.2422,37.7578Z'/%3e%3cpath fill='%23FFF' d='M62.3789,67.0781A23.6675,23.6675,0,0,1,48,72,23.957,23.957,0,0,1,25.3271,55.5234l3.97,3.1641a5.9956,5.9956,0,1,0,7.4765-9.375l-15.0351-12a6.0071,6.0071,0,0,0-7.98.4453l-12,12a5.9994,5.9994,0,0,0,8.4844,8.4844l2.61-2.61A36.0347,36.0347,0,0,0,48,84a35.55,35.55,0,0,0,21.6211-7.3594,5.9977,5.9977,0,1,0-7.2422-9.5625Z'/%3e%3c/g%3e%3c/svg%3e");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+  }
+    
+  .ui-resizable-handle.ui-icon {
+    display: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg data-name='Layer 1' id='Layer_1' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3e%3ctitle/%3e%3cpath fill='%23FFF' d='M28.85,27.76l.06-.2a.84.84,0,0,0,.05-.17A1.72,1.72,0,0,0,29,27V19a2,2,0,0,0-4,0v3.17L9.83,7H13a2,2,0,0,0,0-4H5a1.72,1.72,0,0,0-.39,0l-.17,0-.2.06L4,3.26a.55.55,0,0,0-.15.08,1.8,1.8,0,0,0-.55.55A.55.55,0,0,0,3.26,4a1.28,1.28,0,0,0-.11.2l-.06.2a.84.84,0,0,0,0,.17A1.72,1.72,0,0,0,3,5v8a2,2,0,0,0,4,0V9.83L22.17,25H19a2,2,0,0,0,0,4h8a1.72,1.72,0,0,0,.39,0l.17-.05.2-.06.2-.11a.55.55,0,0,0,.15-.08,1.8,1.8,0,0,0,.55-.55.55.55,0,0,0,.08-.15A1.28,1.28,0,0,0,28.85,27.76Z'/%3e%3c/svg%3e");
+    background-position: center;
+    background-size: contain;
+    background-size: 16px;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+  }
+
+  &:hover {
+    .ui-rotatable-handle.ui-draggable,
+    .ui-resizable-handle.ui-icon {
+      display: block !important;
+    }
   }
 }
 
@@ -615,5 +717,19 @@
     @media (min-width: 770px) {
       margin-bottom: 0;
     }
+  }
+}
+
+.bgBlock {
+  display: none;
+  position: fixed;
+  top: 200px;
+  left: 0;
+  background-color: #FFF;
+  border-radius: 0 12px 12px 0;
+  padding: 12px;
+
+  [type="file"] {
+    display: none;
   }
 }

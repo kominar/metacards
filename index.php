@@ -12,36 +12,70 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.css">
   <script src="https://cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.min.js"></script>
   <script src="/pub/js/_script.js"></script>
-  <title></title>
+  <title>Metacards</title>
 </head>
 
 <body id="body">
 
 <div class="content">
+
+<div class="bgBlock">
+	Цвет <br />
+	<input id="bgcolor" name="bgcolor" type="color" value="#000" /> <br />
+	
+	<label for="bgimg">
+		Изображение <br />
+		<img src="/pub/img/bgimg.png" alt="">
+	</label>
+	<input id="bgimg" name="bgimg" type="file">
+</div>
+
 	<div class="content__main">
 		<div class="table">
 
 		</div>
+
 		<div class="cards">
 			<div id="cards" class="cards__body">
 				<? $num = 1; while ($num <= 20) { ?>
-					<div class="card" data-id="card-<? echo $num; ?>">
-  					<div class="card__body">
-              <img class="card__suit" src="/uploads/cards/<? echo $num; ?>.jpg">
-              <img class="card__shirt" src="/uploads/shirts/1.jpg">
-            </div>
-          </div>
+					<div class="card" data-set="1" data-id="card-<? echo $num; ?>" style="display: block;">
+						<div class="card__body">
+							<img class="card__suit" src="/uploads/cards/1/<? echo $num; ?>.jpg">
+							<img class="card__shirt" src="/uploads/cards/1/back.jpg">
+							<div class="card__remove"></div>
+						</div>
+					</div>
+				<? $num++; } ?>
+				<? $num = 1; while ($num <= 20) { ?>
+					<div class="card" data-set="2" data-id="card-<? echo $num; ?>">
+						<div class="card__body">
+							<img class="card__suit" src="/uploads/cards/2/<? echo $num; ?>.jpg">
+							<img class="card__shirt" src="/uploads/cards/2/back.jpg">
+							<div class="card__remove"></div>
+						</div>
+					</div>
+				<? $num++; } ?>
+				<? $num = 1; while ($num <= 20) { ?>
+					<div class="card" data-set="3" data-id="card-<? echo $num; ?>">
+						<div class="card__body">
+							<img class="card__suit" src="/uploads/cards/3/<? echo $num; ?>.jpg">
+							<img class="card__shirt" src="/uploads/cards/3/back.jpg">
+							<div class="card__remove"></div>
+						</div>
+					</div>
 				<? $num++; } ?>
 			</div>
 		</div>
 	</div>
+
 	<div class="content__sidebar">
 		<div class="sets">
-			<? $num = 1; while ($num <= 10) { ?>
-				<div class="set" data-id="1"><img src="/uploads/shirts/1.jpg"></div>
+			<? $num = 1; while ($num <= 3) { ?>
+				<div class="set <? if ($num == 1) {?>active<?}?>" data-id="<? echo $num; ?>"><img src="/uploads/cards/<? echo $num; ?>/back.jpg"></div>
 			<? $num++; } ?>
 		</div>
 	</div>
+
 </div>
 
 </body>
