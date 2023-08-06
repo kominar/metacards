@@ -28,8 +28,9 @@ jQuery(function($){
         var card = $(this).clone();
         ZINDEX_COUNTER = ZINDEX_COUNTER + 1;
         var height_table = $('.table').height();
+        var height_cards = $('.cards').height();
         var height_card = $(this).height();
-        var height = parseInt(height_table) - parseInt(height_card) - 20;
+        var height = parseInt(height_table) - parseInt(height_card) - parseInt(height_cards) - 10;
         var left = $(this).position().left;
         card.css('z-index', ZINDEX_COUNTER);
         card.css('position', 'absolute');
@@ -42,6 +43,26 @@ jQuery(function($){
         playAudio();
     })
 
+    $('body').on('click', '.js-sets-toggle', function(e) {
+      $(this).parents('.content__sidebar').toggleClass('open');
+    });
+
+    $('body').on('click', '.js-cards-toggle', function(e) {
+      $(this).parents('.cards').toggleClass('open');
+    });
+
+    $('body').on('click', '.js-cards-turnover', function(e) {
+      $('.cards .card').toggleClass('card--back');
+    });
+
+    $('body').on('click', '.js-cards-random', function(e) {
+      $('.cards').addClass('mix');
+
+      setTimeout(function(){
+        $('.cards').removeClass('mix');
+      }, 1000);    
+    });
+    
     $('body').on('dblclick', '.table .card', function(e) {
       $(this).toggleClass('card--back');
     });
@@ -50,8 +71,10 @@ jQuery(function($){
       var set = $(this).attr('data-id');
       $('.set').removeClass('active');
       $(this).addClass('active');
+      $('.cards .card').addClass('card--back');
       $('.cards .card').hide();
       $('.cards .card[data-set='+set+']').show();
+      $('.cards').addClass('open');
     });
 
     $('body').on('click', '.table .card', function(e) {
