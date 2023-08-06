@@ -4,13 +4,13 @@
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/pub/css/index.css"/>
+   <link rel="stylesheet" href="/pub/css/index.css?ver=<?=mt_rand(0, 1000)?>"/>
   <link rel="stylesheet" href="/pub/css/jquery-ui.css"/>
   <script src="/pub/js/jquery.js"></script>
   <script src="/pub/js/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.css">
   <script src="https://cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.min.js"></script>
-  <script src="/pub/js/_script.js"></script>
+  <script src="/pub/js/_script.js?ver=<?=mt_rand(0, 1000)?>"></script>
   <title>Metacards</title>
 </head>
 
