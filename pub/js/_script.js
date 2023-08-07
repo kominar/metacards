@@ -43,6 +43,10 @@ jQuery(function($){
         playAudio("/uploads/audio/take_card.mp3");
     })
 
+    $('body').on('click', '.js-bg-toggle', function(e) {
+      $('.bgPanel').toggleClass('open');
+    });
+
     $('body').on('click', '.js-sets-toggle', function(e) {
       $(this).parents('.content__sidebar').toggleClass('open');
     });
@@ -85,6 +89,18 @@ jQuery(function($){
 
     $('body').on('click', '.card__remove', function(e) {
       $(this).parents('.card').remove();
+    });
+    $('body').on('click', '.bgItem:not(.active)', function(e) {
+      var bg = $(this).attr('data-bg');
+      // console.log()
+      $('.table').css('background-image', 'url('+bg+')');
+      $('.bgItem').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    $('[name=bgcolor]').on('change',function(){    
+      $('.table').css('background-color', $(this).val());
+      $('.table').css('background-image', 'none');
     });
 
   });

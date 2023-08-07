@@ -18,17 +18,6 @@
 
 <div class="content">
 
-	<div class="bgBlock">
-		Цвет <br />
-		<input id="bgcolor" name="bgcolor" type="color" value="#000" /> <br />
-		
-		<label for="bgimg">
-			Изображение <br />
-			<img src="/pub/img/bgimg.png" alt="">
-		</label>
-		<input id="bgimg" name="bgimg" type="file">
-	</div>
-
 	<div class="content__main">
 		<div class="table">
 
@@ -101,6 +90,28 @@
 					</div>
 				</div>
 				
+			</div>
+		</div>
+
+		<div class="bgPanel">
+			<div class="bgPanel__tools">
+				<div class="bgPanel__bttn bgPanel__bttn--toggle js-bg-toggle"></div>		
+			</div>
+
+			<div class="bgPanel__label">Цвет:</div>
+			<input id="bgcolor" name="bgcolor" type="color" value="#262626" list="colorList" /> <br />
+			<datalist id="colorList">
+				<option value="#000000" label="Красный">
+				<option value="#ff0000" label="Красный">
+				<option value="#008000" label="Зелёный">
+				<option value="#0000ff" label="Синий">
+			</datalist>
+			<br />
+			<div class="bgPanel__label">Фон:</div>
+			<div class="bgList">				
+				<? $num = 1; while ($num <= 5) { ?> 
+					<div class="bgItem" data-bg="/uploads/bg/<?= $num; ?>.jpg" style="background-image: url('/uploads/bg/small/<?= $num; ?>.jpg');"></div>
+				<? $num++; } ?>
 			</div>
 		</div>
 	</div>
