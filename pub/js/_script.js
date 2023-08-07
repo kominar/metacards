@@ -12,9 +12,9 @@ jQuery(function($){
       })
   };
 
-  function playAudio(){
+  function playAudio(url){
     var myAudio = new Audio;
-    myAudio.src = "/uploads/audio/take_card.mp3";
+    myAudio.src = url;
     myAudio.play();
   }
 
@@ -40,7 +40,7 @@ jQuery(function($){
         card.draggable({ containment: ".table", scroll: false });
         card.find('.card__body').resizable({ containment: ".table", aspectRatio: true });
         card.find('.card__body').rotatable({ degress: 45 });
-        playAudio();
+        playAudio("/uploads/audio/take_card.mp3");
     })
 
     $('body').on('click', '.js-sets-toggle', function(e) {
@@ -57,6 +57,7 @@ jQuery(function($){
 
     $('body').on('click', '.js-cards-random', function(e) {
       $('.cards').addClass('mix');
+      playAudio("/uploads/audio/mix_cards.mp3")
 
       setTimeout(function(){
         $('.cards').removeClass('mix');
