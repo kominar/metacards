@@ -28,6 +28,7 @@
 				<div class="cards__bttn cards__bttn--toggle js-cards-toggle"></div>	
 				<div class="cards__bttn cards__bttn--random js-cards-random"></div>		
 				<div class="cards__bttn cards__bttn--turnover js-cards-turnover"></div>		
+				<div class="cards__bttn cards__bttn--clean js-cards-clean"></div>	
 			</div>
 			
 			<div id="cards" class="cards__body">

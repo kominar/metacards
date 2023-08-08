@@ -41,6 +41,7 @@ jQuery(function($){
         card.find('.card__body').resizable({ containment: ".table", aspectRatio: true });
         card.find('.card__body').rotatable({ degress: 45 });
         playAudio("/uploads/audio/take_card.mp3");
+        $(this).addClass('invis');
     })
 
     $('body').on('click', '.js-bg-toggle', function(e) {
@@ -66,6 +67,12 @@ jQuery(function($){
       setTimeout(function(){
         $('.cards').removeClass('mix');
       }, 1000);    
+    });
+
+    $('body').on('click', '.js-cards-clean', function(e) {
+      $('.table .card').remove();
+      $('.cards .card').removeClass('invis');
+      playAudio("/uploads/audio/clear_cards.mp3")
     });
     
     $('body').on('dblclick', '.table .card', function(e) {
