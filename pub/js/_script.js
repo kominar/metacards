@@ -95,8 +95,12 @@ jQuery(function($){
     });
 
     $('body').on('click', '.card__remove', function(e) {
+      var set = $(this).parents('.card').attr('data-set');
+      var id = $(this).parents('.card').attr('data-id');
+      $('.cards .card[data-id='+id+'][data-set='+set+']').removeClass('invis');
       $(this).parents('.card').remove();
     });
+
     $('body').on('click', '.bgItem:not(.active)', function(e) {
       var bg = $(this).attr('data-bg');
       // console.log()
